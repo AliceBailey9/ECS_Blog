@@ -11,7 +11,8 @@ app.engine(
   handlebars({
     layoutsDir: __dirname + "/views/layouts",
     extname: "hbs",
-    defaultLayout: "planB",
+    defaultLayout: "index",
+    partialsDir: __dirname + "/views/partials/",
   })
 );
 
@@ -20,8 +21,8 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
-  // res.render("main", { layout: "index" });
-  res.render("main");
+  res.render("main", { layout: "index" });
+  //res.render("main");
 });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
