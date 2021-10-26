@@ -17,8 +17,6 @@ app.engine(
   })
 );
 
-//const blogs = ["blog1", "blog2", "blog3", "blog4"];
-
 //Serves static files (we need it to import a css file)
 app.use(express.static("public"));
 
@@ -32,16 +30,23 @@ app.get("/postblog", (req, res) => {
   res.render("postblog", { layout: "index" });
 });
 
+const fakeBlogs = [{ blog: "content 1" }, { blog: "content 2" }];
+
 app.get("/allblogs", (req, res) => {
-  let blogs = [];
+  blogsArray = [];
   getAllBlogs()
-    .then((res) => {
-      blogs.push(res);
+    .then((blog) => {
+      blogsArray.push(blog);
+    })
+    .then(() => {
+      res.render("allblogs", {
+        layout: "index",
+        blogs: blogsArray[0],
+      });
     })
     .catch((err) => {
       console.log(err);
     });
-  res.render("allblogs", { layout: "index", blogs: blogs });
 });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));

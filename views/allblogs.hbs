@@ -1,3 +1,12 @@
-<h1>all blogs will go here</h1>
+<div class+"container">
 
-{{blogs}}
+  <h1>all blogs will go here</h1>
+
+
+  <ul>
+    {{#each blogs}}
+      <li>{{this.title}}</li>
+    {{/each}}
+  </ul>
+ 
+</div>
