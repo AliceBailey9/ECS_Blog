@@ -10,4 +10,10 @@ const getAllBlogs = () => {
   });
 };
 
-module.exports = getAllBlogs;
+const postBlog = (blog) => {
+  return blogsApi.post("/blogs", blog).then((res) => {
+    return res.data;
+  });
+};
+
+module.exports = { getAllBlogs, postBlog };
