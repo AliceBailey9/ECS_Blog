@@ -42,6 +42,13 @@ app.post("/postblog", (req, res) => {
   //   });
 });
 
+app.post("/blog", (req, res) => {
+  console.log(req.body);
+  //add api call using title
+  res.render("blog", { blog: req.body });
+  //   res.redirect(status: 200, "/blog", { blogTitle: req.body });
+});
+
 app.get("/postblog", (req, res) => {
   res.render("postblog", { layout: "index" });
 });
@@ -67,9 +74,10 @@ app.get("/allblogs", (req, res) => {
     });
 });
 
-app.get("/moreinfo", (req, res) => {
-  res.render("moreinfo", {
+app.get("/blog", (req, res) => {
+  res.render("blog", {
     layout: "index",
+    blog: { title: "hello", content: "this is my article content" },
   });
 });
 

@@ -6,6 +6,10 @@
   <ul>
     {{#each blogs}}
       <li>{{this.content}}
+          <form action="/blog" method="POST">
+        <input type="hidden" name="title" value={{this.title}} />
+        <button type="submit">Submit</button>
+        </form>
 
       {{!-- <div class="card" style="width: 18rem;">
   <img class="card-img-top" src=".../100px180/" alt="Card image cap">
