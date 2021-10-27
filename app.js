@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const port = 9090;
 const handlebars = require("express-handlebars");
-const getFirst = require("./__test__/utils");
+const { getFirst, randomPhoto } = require("./__test__/utils");
 const { getAllBlogs, postBlog, getBlog } = require("./api");
+const photos = require("./photos");
 
 app.set("view engine", "hbs");
 
@@ -46,17 +47,17 @@ app.get("/postblog", (req, res) => {
   res.render("postblog", { layout: "index" });
 });
 
-blogsArray = [];
-
 app.get("/allblogs", (req, res) => {
+  blogsArray = [];
   getAllBlogs()
     .then((blog) => {
       blogsArray.push(blog);
     })
     .then(() => {
+      const blogs = getFirst(blogsArray[0], 300);
       res.render("allblogs", {
         layout: "index",
-        blogs: getFirst(blogsArray[0], 10),
+        blogs: randomPhoto(blogs, photos),
       });
     })
     .catch((err) => {

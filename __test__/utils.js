@@ -8,4 +8,12 @@ const getFirst = function (blogArr, num) {
   return smallContentBlog;
 };
 
-module.exports = getFirst;
+const randomPhoto = function (blogArr, photoArr) {
+  blogArr.forEach(
+    (blog) =>
+      (blog.photo = photoArr[Math.floor(Math.random() * (blogArr.length - 1))])
+  );
+  return blogArr;
+};
+
+module.exports = { getFirst, randomPhoto };
