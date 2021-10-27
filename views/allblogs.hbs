@@ -5,7 +5,11 @@
 
   <ul>
     {{#each blogs}}
-      <li>{{this.title}}</li>
+      <li>{{this.content}}</li>
+    {{else}}
+    <div>
+        <p>Sorry we are having trouble getting your blogs</p>
+    </div>
     {{/each}}
   </ul>
  

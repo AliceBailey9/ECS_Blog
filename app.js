@@ -4,7 +4,6 @@ const port = 3000;
 const handlebars = require("express-handlebars");
 const getAllBlogs = require("./api");
 
-//Sets our app to use the handlebars engine
 app.set("view engine", "hbs");
 
 app.engine(
@@ -17,23 +16,32 @@ app.engine(
   })
 );
 
-//Serves static files (we need it to import a css file)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
   res.render("main", { layout: "index" });
-  //res.render("main");
+});
+
+app.post("/postblog", (req, res) => {
+  //let body = req.body;
+  console.log(req.body);
+  //   res.render("allblogs", {
+  //     layout: "index",
+  //     blogs: blogsArray[0],
+  //   });
+  res.redirect("/");
 });
 
 app.get("/postblog", (req, res) => {
   res.render("postblog", { layout: "index" });
 });
 
-const fakeBlogs = [{ blog: "content 1" }, { blog: "content 2" }];
+blogsArray = [];
 
 app.get("/allblogs", (req, res) => {
-  blogsArray = [];
   getAllBlogs()
     .then((blog) => {
       blogsArray.push(blog);
@@ -46,6 +54,9 @@ app.get("/allblogs", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.render("allblogs", {
+        layout: "index",
+      });
     });
 });
 
