@@ -16,4 +16,10 @@ const postBlog = (blog) => {
   });
 };
 
-module.exports = { getAllBlogs, postBlog };
+const getBlog = (title) => {
+  return blogsApi.get(`/blogs/${title}`).then((res) => {
+    return res.data;
+  });
+};
+
+module.exports = { getAllBlogs, postBlog, getBlog };

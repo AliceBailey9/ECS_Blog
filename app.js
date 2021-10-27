@@ -3,7 +3,7 @@ const app = express();
 const port = 9090;
 const handlebars = require("express-handlebars");
 const getFirst = require("./__test__/utils");
-const { getAllBlogs, postBlog } = require("./api");
+const { getAllBlogs, postBlog, getBlog } = require("./api");
 
 app.set("view engine", "hbs");
 
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.post("/postblog", (req, res) => {
   postBlog(req.body)
     .then((msg) => {
-      console.log(msg);
+      console.log("success");
     })
     .then(() => {
       res.redirect("/");
@@ -40,13 +40,6 @@ app.post("/postblog", (req, res) => {
   //     layout: "index",
   //     blogs: blogsArray[0],
   //   });
-});
-
-app.post("/blog", (req, res) => {
-  console.log(req.body);
-  //add api call using title
-  res.render("blog", { blog: req.body });
-  //   res.redirect(status: 200, "/blog", { blogTitle: req.body });
 });
 
 app.get("/postblog", (req, res) => {
@@ -72,6 +65,14 @@ app.get("/allblogs", (req, res) => {
         layout: "index",
       });
     });
+});
+
+app.post("/blog", (req, res) => {
+  let { title } = req.body;
+
+  getBlog(title).then((blog) => {
+    res.render("blog", { blog });
+  });
 });
 
 app.get("/blog", (req, res) => {
