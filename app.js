@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 9090;
 const handlebars = require("express-handlebars");
+const getFirst = require("./__test__/utils");
 const { getAllBlogs, postBlog } = require("./api");
 
 app.set("view engine", "hbs");
@@ -21,11 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("main", { layout: "index" });
+  res.render("main");
 });
 
 app.post("/postblog", (req, res) => {
-  console.log(req.body);
   postBlog(req.body)
     .then((msg) => {
       console.log(msg);
@@ -56,7 +56,7 @@ app.get("/allblogs", (req, res) => {
     .then(() => {
       res.render("allblogs", {
         layout: "index",
-        blogs: blogsArray[0],
+        blogs: getFirst(blogsArray[0], 10),
       });
     })
     .catch((err) => {
@@ -65,6 +65,12 @@ app.get("/allblogs", (req, res) => {
         layout: "index",
       });
     });
+});
+
+app.get("/moreinfo", (req, res) => {
+  res.render("moreinfo", {
+    layout: "index",
+  });
 });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
