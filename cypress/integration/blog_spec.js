@@ -31,4 +31,9 @@ describe("Blog site tesing", () => {
     cy.get("form").contains("Submit").click();
     cy.url().should("include", "/");
   });
+  it("clicking on read more on all blogs redirected to single blog page", () => {
+    cy.get(":nth-child(1) > .nav-link").click();
+    cy.get(":nth-child(4) > .card-body > form > button").click({ force: true });
+    cy.url().should("include", "/blog");
+  });
 });
