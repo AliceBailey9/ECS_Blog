@@ -4,7 +4,7 @@ pipeline {
     stage('Run Unit tests') {
       steps {
         sh '''npm install
-npm test'''
+npm test utils.test.js'''
       }
     }
 
