@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Run Unit tests') {
       steps {
-        sh 'npm install'
-        sh 'npm test'
+        sh '''npm install
+npm test'''
       }
     }
 
