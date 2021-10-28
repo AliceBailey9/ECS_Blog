@@ -1,33 +1,32 @@
 <style>
-#blogCard{
-  height: 300px;
-  width: 300px;
-}
+  #blogCard{ height: 300px; width: 300px; }
 </style>
 
-<div class+"container">
+<h1>Recent Blogs</h1>
 
-  <h1>Recent Blogs</h1>
-
-
-    {{#each blogs}}
-      <div class="card">
-  <div class="card-body">
-  <img class="card-img-top" id="blogCard" src={{this.photo}} width="250" height="150" alt={{this.title}}>
-    <h5 class="card-title">{{this.title}}</h5>
-    <p class="card-text">{{this.content}}...</p>
-          <form action="/blog" method="POST">
+{{#each blogs}}
+  <div class="card">
+    <div class="card-body">
+      <img
+        class="card-img-top"
+        id="blogCard"
+        src={{this.photo}}
+        width="250"
+        height="150"
+        alt={{this.title}}
+      />
+      <h5 class="card-title">{{this.title}}</h5>
+      <p class="card-text">{{this.content}}...</p>
+      <form action="/blog" method="POST">
         <input type="hidden" name="title" value={{this.title}} />
-        <button type="submit">Find out more</button>
-        </form>
-    
-  </div>
-</div>
-    {{else}}
-    <div>
-        <p>Sorry we are having trouble getting your blogs</p>
+        <button type="submit">read more</button>
+      </form>
+
     </div>
-    {{/each}}
-  </ul>
- 
-</div>
+  </div>
+
+{{else}}
+  <div>
+    <p>Sorry we are having trouble getting your blogs</p>
+  </div>
+{{/each}}
