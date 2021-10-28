@@ -37,10 +37,6 @@ app.post("/postblog", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-  //   res.render("allblogs", {
-  //     layout: "index",
-  //     blogs: blogsArray[0],
-  //   });
 });
 
 app.get("/postblog", (req, res) => {
@@ -72,14 +68,9 @@ app.post("/blog", (req, res) => {
   let { title } = req.body;
 
   getBlog(title).then((blog) => {
-    res.render("blog", { blog });
-  });
-});
-
-app.get("/blog", (req, res) => {
-  res.render("blog", {
-    layout: "index",
-    blog: { title: "hello", content: "this is my article content" },
+    let blogArr = [blog];
+    randomPhoto(blogArr, photos);
+    res.render("blog", { blog: blogArr[0] });
   });
 });
 

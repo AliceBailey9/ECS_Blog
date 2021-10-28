@@ -1,14 +1,19 @@
+<style>
+#blogCard{
+  height: 300px;
+  width: 300px;
+}
+</style>
+
 <div class+"container">
 
-  <h1>all blogs will go here</h1>
+  <h1>Recent Blogs</h1>
 
 
-  <ul>
     {{#each blogs}}
-      <li>
-      <div class="card" style="width: 18rem;">
+      <div class="card">
   <div class="card-body">
-  <img class="card-img-top" src={{this.photo}} width="180" height="100" alt={{this.title}}>
+  <img class="card-img-top" id="blogCard" src={{this.photo}} width="250" height="150" alt={{this.title}}>
     <h5 class="card-title">{{this.title}}</h5>
     <p class="card-text">{{this.content}}...</p>
           <form action="/blog" method="POST">
@@ -18,7 +23,6 @@
     
   </div>
 </div>
-      </li>
     {{else}}
     <div>
         <p>Sorry we are having trouble getting your blogs</p>
