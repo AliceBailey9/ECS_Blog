@@ -68,9 +68,7 @@ app.post("/blog", (req, res) => {
   let { title } = req.body;
 
   getBlog(title).then((blog) => {
-    let blogArr = [blog];
-    randomPhoto(blogArr, photos);
-    res.render("blog", { blog: blogArr[0] });
+    res.render("blog", { blog: randomPhoto(blog, photos) });
   });
 });
 
