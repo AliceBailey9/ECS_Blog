@@ -1,19 +1,84 @@
-<div>
+<style>
+  #post-blog-container { padding-top: 60px } body { color: #000; overflow-x:
+  hidden; height: 100%; background-image:
+  url("http://brightbluecreative.co.uk/wp-content/uploads/2018/04/Tech-background.jpg");
+  background-repeat: no-repeat; background-size: 100% 100% } .card { padding:
+  30px 40px; margin-top: 60px; margin-bottom: 60px; border: none !important;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2) } .blue-text { color: #00BCD4 }
+  .form-control-label { margin-bottom: 0 } input, textarea, button { padding:
+  8px 15px; border-radius: 5px !important; margin: 5px 0px; box-sizing:
+  border-box; border: 1px solid #ccc; font-size: 18px !important; font-weight:
+  300 }
+</style>
+
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <h3>Post a blog here</h3>
+      <p class="blue-text">Just answer a few questions<br />
+        Here we talk about all the new things going on in the tech world</p>
+      <div class="card">
+        <h5 class="text-center mb-4">Powering the tech savvy</h5>
+        <form class="form-card" action="/postblog" method="POST">
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-12 flex-column d-flex">
+              <label for="title" class="form-control-label px-3">Blog title<span
+                  class="text-danger"
+                > *</span></label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter the title of your blog"
+              />
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-12 flex-column d-flex">
+              <label for="content" class="form-control-label px-3">Blog content<span
+                  class="text-danger"
+                > *</span></label>
+              <input
+                type="text"
+                name="content"
+                placeholder="Enter your blog content"
+              />
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="form-group col-12 flex-column d-flex">
+              <button
+                type="submit"
+                class="btn-block btn-primary"
+              >Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! <div id="post-blog-container">
   <h3>Welcome to the tech Blog</h3>
   <p>Here we talk about all the new things going on in the tech world</p>
 
   <div>
     <form action="/postblog" method="POST">
       <legend>Blog upload your blog here</legend>
-      <div>
+      <div class="form-group">
         <label for="title">Please enter blog title</label>
         <input type="text" name="title" placeholder="Blog title*" />
       </div>
-      <div>
+      <div class="form-group">
         <label for="content">Please enter blog content</label>
-        <input type="text" name="content" placeholder="Blog content*" />
+        <input
+          class="form-control"
+          type="text"
+          name="content"
+          placeholder="Blog content*"
+        />
       </div>
       <button type="submit">Submit</button>
     </form>
   </div>
-</div>
+</div> }}
