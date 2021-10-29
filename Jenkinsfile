@@ -8,5 +8,11 @@ pipeline {
       }
     }
 
+    stage('Run Unit Tests') {
+      steps {
+        sh 'npm test utils.test.js'
+      }
+    }
+
   }
 }
