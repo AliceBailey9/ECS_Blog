@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Run Unit tests') {
+    stage('Install dependencies ') {
       steps {
         sh '''npm install
-npm test utils.test.js'''
+'''
       }
     }
 
