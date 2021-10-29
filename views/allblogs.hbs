@@ -1,18 +1,14 @@
-<style>
-  #blogCard{ height: 300px; width: 300px; }
-</style>
-
 <h1>Recent Blogs</h1>
 
 {{#each blogs}}
-  <div class="card">
+  <div class="card" class="mx-auto" style="width: 50%" style="margin: auto;">
     <div class="card-body">
       <img
         class="card-img-top"
         id="blogCard"
         src={{this.photo}}
         width="250"
-        height="150"
+        height="300"
         alt={{this.title}}
       />
       <h5 class="card-title">{{this.title}}</h5>
